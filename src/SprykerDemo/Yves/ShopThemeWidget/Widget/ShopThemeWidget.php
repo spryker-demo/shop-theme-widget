@@ -36,7 +36,7 @@ class ShopThemeWidget extends AbstractWidget
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     protected function getShopTheme(): array
     {
