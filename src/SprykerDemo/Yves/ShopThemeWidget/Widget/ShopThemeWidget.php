@@ -7,6 +7,7 @@
 
 namespace SprykerDemo\Yves\ShopThemeWidget\Widget;
 
+use Generated\Shared\Transfer\ShopThemeDataTransfer;
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
 
 /**
@@ -32,16 +33,14 @@ class ShopThemeWidget extends AbstractWidget
 
     public function __construct()
     {
-        $this->addParameter('data', $this->getShopTheme());
+        $this->addParameter('data', $this->getShopThemeData());
     }
 
     /**
-     * @return array<mixed>
+     * @return \Generated\Shared\Transfer\ShopThemeDataTransfer
      */
-    protected function getShopTheme(): array
+    protected function getShopThemeData(): ShopThemeDataTransfer
     {
-        $shopThemeTransfer = $this->getFactory()->getShopThemeStorageClient()->getActiveTheme();
-
-        return $shopThemeTransfer->getData();
+        return $this->getFactory()->getShopThemeStorageClient()->getActiveShopThemeData();
     }
 }
