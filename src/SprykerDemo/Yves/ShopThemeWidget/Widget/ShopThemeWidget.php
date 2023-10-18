@@ -15,6 +15,11 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
  */
 class ShopThemeWidget extends AbstractWidget
 {
+    public function __construct()
+    {
+        $this->addParameter('data', $this->getShopThemeData());
+    }
+
     /**
      * @return string
      */
@@ -29,11 +34,6 @@ class ShopThemeWidget extends AbstractWidget
     public static function getTemplate(): string
     {
         return '@ShopThemeWidget/views/shop-theme-widget/shop-theme-widget.twig';
-    }
-
-    public function __construct()
-    {
-        $this->addParameter('data', $this->getShopThemeData());
     }
 
     /**

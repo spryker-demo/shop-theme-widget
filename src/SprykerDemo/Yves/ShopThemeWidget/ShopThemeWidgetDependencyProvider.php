@@ -37,9 +37,9 @@ class ShopThemeWidgetDependencyProvider extends AbstractBundleDependencyProvider
      */
     protected function addShopThemeStorageClient(Container $container): Container
     {
-        $container[static::CLIENT_SHOP_THEME_STORAGE] = function (Container $container): ShopThemeStorageClientInterface {
+        $container->set(static::CLIENT_SHOP_THEME_STORAGE, function (Container $container): ShopThemeStorageClientInterface {
             return $container->getLocator()->shopThemeStorage()->client();
-        };
+        });
 
         return $container;
     }
