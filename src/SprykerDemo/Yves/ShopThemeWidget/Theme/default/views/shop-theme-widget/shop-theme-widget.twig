@@ -6,45 +6,22 @@
 } %}
 
 {% block body %}
-    {% if data.styles | length %}
-        <style>
-            :root {
-                {% if data.styles.headerColor is not null and data.styles.headerColorEnabled %}
-                    --setting-color-header-background: {{ data.styles.headerColor }};
-                {% endif %}
+    {% set shopThemeData = data.styles %}
 
-                {% if data.styles.headerTopbarColor is not null  and data.styles.headerTopbarColorEnabled %}
-                    --setting-color-header-topbar-background: {{ data.styles.headerTopbarColor }};
-                {% endif %}
+    {% set colorKeys = [
+        'headerTopBackgroundColor', 'headerTopTextColor', 'headerTopIconColor',
+        'headerMainBackgroundColor', 'headerMainTextColor', 'headerMainIconColor',
+        'headerBottomBackgroundColor', 'headerBottomTextColor', 'headerBottomIconColor'
+    ] %}
 
-                {% if data.styles.headerNavigationBackground is not null and data.styles.headerNavigationBackgroundEnabled %}
-                    --setting-color-navigation-background: {{ data.styles.headerNavigationBackground }};
+    <style>
+        :root {
+            {% for color in colorKeys %}
+                {% set colorEnableKey = color ~ 'Enabled' %}
+                {% if shopThemeData[color] is defined and shopThemeData[color] is not null and shopThemeData[colorEnableKey] is defined and shopThemeData[colorEnableKey] %}
+                    --{{ color }}: {{ shopThemeData[color] }};
                 {% endif %}
-
-                {% if data.styles.headerNavigationTextColor is not null and data.styles.headerNavigationTextColorEnabled %}
-                    --setting-color-navigation-text-color: {{ data.styles.headerNavigationTextColor }};
-                {% endif %}
-
-                {% if data.styles.footerColor is not null and data.styles.footerColorEnabled %}
-                    --setting-color-footer-background: {{ data.styles.footerColor }};
-                {% endif %}
-
-                {% if data.styles.footerBottomLineBackground is not null and data.styles.footerBottomLineBackgroundEnabled %}
-                    --setting-color-footerBottomLineBackground: {{ data.styles.footerBottomLineBackground }};
-                {% endif %}
-
-                {% if data.styles.footerBottomLineTextColor is not null and data.styles.footerBottomLineTextColorEnabled %}
-                    --setting-color-footerBottomLineTextColor: {{ data.styles.footerBottomLineTextColor }};
-                {% endif %}
-
-                {% if data.styles.buttonPrimaryColor is not null and data.styles.buttonPrimaryColorEnabled %}
-                    --setting-color-primary-button-background: {{ data.styles.buttonPrimaryColor }};
-                {% endif %}
-
-                {% if data.styles.buttonSecondaryColor is not null and data.styles.buttonSecondaryColorEnabled %}
-                    --setting-color-alternative-button-background: {{ data.styles.buttonSecondaryColor }};
-                {% endif %}
-            }
-        </style>
-    {% endif %}
+            {% endfor %}
+        }
+    </style>
 {% endblock %}
