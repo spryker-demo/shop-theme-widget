@@ -37,10 +37,10 @@ class ShopThemeWidget extends AbstractWidget
     }
 
     /**
-     * @return \Generated\Shared\Transfer\ShopThemeDataTransfer
+     * @return array<string, mixed>
      */
-    protected function getShopThemeData(): ShopThemeDataTransfer
+    protected function getShopThemeData(): array
     {
-        return $this->getFactory()->getShopThemeStorageClient()->getActiveShopThemeData();
+        return $this->getFactory()->getShopThemeStorageClient()->getActiveShopThemeData()->toArray(true, true);
     }
 }

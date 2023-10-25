@@ -2,13 +2,11 @@
 {% extends template('widget') %}
 
 {% define data = {
-    styles: _widget.data
+    shopThemeYves: _widget.data['shopThemeYves']
 } %}
 
 {% block body %}
-    {% set shopThemeData = data.styles %}
-
-    {% set colorKeys = [
+   {# {% set colorKeys = [
         'headerTopBackgroundColor', 'headerTopTextColor', 'headerTopIconColor',
         'headerMainBackgroundColor', 'headerMainTextColor', 'headerMainIconColor',
         'headerBottomBackgroundColor', 'headerBottomTextColor', 'headerBottomIconColor',
@@ -17,15 +15,15 @@
         'footerNavigationSectionBackgroundColor','footerNavigationSectionTextColor','footerNavigationSectionIconColor',
         'footerCopyrightSectionBackgroundColor','footerCopyrightSectionTextColor','footerCopyrightSectionIconColor'
 
-    ] %}
+    ] %}#}
 
     <style>
         :root {
-            {% for color in colorKeys %}
-                {% set colorEnableKey = color ~ 'Enabled' %}
-                {% if shopThemeData[color] is defined and shopThemeData[color] is not null and shopThemeData[colorEnableKey] is defined and shopThemeData[colorEnableKey] %}
-                    --{{ color }}: {{ shopThemeData[color] }};
+            {% for colorName,color in data.shopThemeYves %}
+                {% if color is not null and color.isEnabled %}
+                    --{{ colorName }}: {{ color.color }};
                 {% endif %}
+
             {% endfor %}
         }
     </style>
