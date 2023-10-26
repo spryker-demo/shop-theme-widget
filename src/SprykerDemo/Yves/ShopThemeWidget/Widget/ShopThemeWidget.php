@@ -7,7 +7,6 @@
 
 namespace SprykerDemo\Yves\ShopThemeWidget\Widget;
 
-use Generated\Shared\Transfer\ShopThemeDataTransfer;
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
 
 /**
