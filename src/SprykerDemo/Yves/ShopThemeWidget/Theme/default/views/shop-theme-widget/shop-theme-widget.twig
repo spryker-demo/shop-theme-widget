@@ -9,11 +9,12 @@
     <style>
         :root {
             {% for colorName,color in data.shopThemeYves %}
-                {% if color is not null and color.isEnabled %}
+                {% if colorName != 'css' and color is not null and color.isEnabled %}
                     --{{ colorName }}: {{ color.color }};
                 {% endif %}
-
             {% endfor %}
         }
+
+        {{ data.shopThemeYves['css'] }}
     </style>
 {% endblock %}
