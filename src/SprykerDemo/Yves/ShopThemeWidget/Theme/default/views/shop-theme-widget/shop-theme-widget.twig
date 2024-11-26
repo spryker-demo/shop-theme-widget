@@ -7,6 +7,10 @@
 
 {% block body %}
     <style>
+        {% if data.shopThemeYves %}
+            {{ data.shopThemeYves['css'] }}
+        {% endif %}
+
         :root {
             {% for colorName,color in data.shopThemeYves %}
                 {% if colorName != 'css' and color is not null and color.isEnabled %}
@@ -14,9 +18,5 @@
                 {% endif %}
             {% endfor %}
         }
-
-        {% if data.shopThemeYves %}
-            {{ data.shopThemeYves['css'] }}
-        {% endif %}
     </style>
 {% endblock %}
