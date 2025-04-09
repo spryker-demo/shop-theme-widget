@@ -4,7 +4,7 @@
     "description": "ShopThemeWidget module",
     "license": "proprietary",
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.2",
         "spryker-demo/shop-theme-storage": "^1.0.0",
         "spryker/kernel": "^3.70.0"
     },
